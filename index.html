@@ -1,59 +1,128 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head><!-- PLAYABLE_TOUCH_PATCH_V1 --><script>
+(function() {
+  if (window.__playableTouchPatchInstalled) return;
+  window.__playableTouchPatchInstalled = true;
+  var origAdd = EventTarget.prototype.addEventListener;
+  var blockedTypes = { touchstart: 1, touchmove: 1, wheel: 1 };
+  EventTarget.prototype.addEventListener = function(type, listener, options) {
+    if (blockedTypes[type]) {
+      if (options === undefined || options === null) {
+        options = { passive: true };
+      } else if (typeof options === 'boolean') {
+        options = { capture: options, passive: true };
+      } else {
+        options = Object.assign({}, options, { passive: true });
+      }
+    }
+    return origAdd.call(this, type, listener, options);
+  };
+})();
+</script><script>window.Intl=window.Intl||{};Intl.t=function(s){return(Intl._locale&&Intl._locale[s])||s;};</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Términos y Condiciones - TasaStock PRO</title>
+<title>Legal - TasaStock PRO</title>
 <link rel="icon" href="icon-192.png">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#0a0a0b;color:#fff;font-family:Inter,system-ui,sans-serif;line-height:1.6;padding:24px;max-width:800px;margin:auto}
-.logo{display:flex;align-items:center;gap:12px;margin-bottom:32px}
-.logo-icon{width:44px;height:44px;background:#fff;border-radius:12px;display:grid;place-items:center;font-weight:900;color:#000}
-h1{font-size:32px;font-weight:900;margin-bottom:8px;letter-spacing:-0.03em}
-.subtitle{color:rgba(255,255,255,0.6);margin-bottom:32px;font-size:18px}
-.card{background:#151518;border:1px solid #2a2a30;border-radius:20px;padding:24px;margin-bottom:20px}
-h2{font-size:20px;margin-bottom:12px}
-p,li{font-size:17px;color:rgba(255,255,255,0.85)}
-ol{padding-left:20px;margin-top:12px}
-li{margin-bottom:12px}
-.badge{display:inline-block;background:#fff;color:#000;padding:4px 12px;border-radius:999px;font-size:13px;font-weight:800;margin-bottom:16px}
-a{color:#00e5ff;text-decoration:none}
-.footer{margin-top:40px;padding-top:20px;border-top:1px solid #1a1a1e;color:rgba(255,255,255,0.3);font-size:14px;text-align:center}
-strong{color:#fff}
+body{background:#0a0a0b;color:#fff;font-family:Inter,system-ui,sans-serif;line-height:1.7;padding:20px;max-width:860px;margin:auto}
+.logo{display:flex;align-items:center;gap:12px;margin-bottom:28px}
+.logo-icon{width:48px;height:48px;background:#fff;border-radius:14px;display:grid;place-items:center;font-weight:900;color:#000;font-size:22px}
+h1{font-size:32px;font-weight:900;letter-spacing:-0.03em;margin-bottom:6px}
+.subtitle{color:rgba(255,255,255,0.55);font-size:16px;margin-bottom:28px}
+.nav{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.nav a{background:#151518;border:1px solid #2a2a30;border-radius:999px;padding:10px 18px;color:#fff;font-size:15px;font-weight:700;text-decoration:none}
+.nav a.active{background:#fff;color:#000}
+.card{background:#151518;border:1px solid #2a2a30;border-radius:22px;padding:26px;margin-bottom:20px}
+h2{font-size:22px;font-weight:800;margin-bottom:12px}
+h3{font-size:18px;font-weight:700;margin:18px 0 8px;color:#fff}
+p,li{font-size:17px;color:rgba(255,255,255,0.88)}
+ul,ol{padding-left:20px;margin-top:10px}
+li{margin-bottom:10px}
+.badge{display:inline-block;padding:5px 14px;border-radius:999px;font-size:12px;font-weight:800;margin-bottom:14px;letter-spacing:0.06em}
+.badge-blue{background:#00e5ff20;color:#00e5ff;border:1px solid #00e5ff40}
+.badge-white{background:#fff;color:#000}
+.divider{height:1px;background:#1e1e22;margin:32px 0}
+.footer{margin-top:40px;padding-top:20px;border-top:1px solid #1a1a1e;color:rgba(255,255,255,0.35);font-size:13px;text-align:center}
+a{color:#00e5ff}
 </style>
 </head>
 <body>
-<div class="logo"><div class="logo-icon">$</div><div><div style="font-weight:900">TasaStock PRO</div><div style="font-size:13px;color:rgba(255,255,255,0.5)">OFFLINE FIRST</div></div></div>
-<h1>Términos y Condiciones</h1>
-<p class="subtitle">Uso de la aplicación TasaStock PRO • Venezuela</p>
 
-<div class="card">
-<span class="badge">LEE ESTO ANTES DE USAR</span>
-<h2>Condiciones de uso</h2>
+<div class="logo">
+<div class="logo-icon">$</div>
+<div><div style="font-weight:900;font-size:18px">TasaStock PRO</div><div style="font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.12em">OFFLINE FIRST • VENEZUELA</div></div>
+</div>
+
+<h1>Centro Legal</h1>
+<p class="subtitle">Todo lo que necesitas saber para usar TasaStock PRO tranquilo. Una sola página, sin rodeos.</p>
+
+<div class="nav">
+<a href="#privacidad" class="active">🔒 Privacidad</a>
+<a href="#terminos">📄 Términos y Condiciones</a>
+<a href="index.html" style="background:#1e1e22">← Volver a la App</a>
+</div>
+
+<!-- PRIVACIDAD -->
+<div id="privacidad" class="card">
+<span class="badge badge-blue">100% OFFLINE - NO RECOLECTAMOS DATOS</span>
+<h2>Política de Privacidad</h2>
+<p><strong>TasaStock PRO no recolecta, almacena ni envía ningún dato personal a servidores externos.</strong> Toda la información (productos, tasa, stock) se guarda únicamente en el almacenamiento local (localStorage) de tu celular. No usamos cookies de rastreo. No compartimos datos con terceros.</p>
+
+<h3>1. Qué datos maneja</h3>
+<ul>
+<li>Nombre de productos que tú escribes</li>
+<li>Precios en $</li>
+<li>Cantidades de stock</li>
+<li>Tasa Bs que tú configuras</li>
+</ul>
+<p>Nada sale de tu teléfono.</p>
+
+<h3>2. Dónde se guarda</h3>
+<p>En la memoria interna de tu navegador. Si borras caché o desinstalas la app sin exportar tu .json, se pierde. Nosotros no tenemos copia, por privacidad.</p>
+
+<h3>3. Permisos</h3>
+<p>No pedimos cámara, contactos, ubicación ni archivos. Solo funciona como app instalada (PWA).</p>
+
+<h3>4. Terceros</h3>
+<p>Está alojada en GitHub Pages. GitHub puede ver visitas anónimas, pero tu inventario nunca se envía a ningún servidor nuestro.</p>
+<p style="margin-top:14px;color:rgba(255,255,255,0.5);font-size:14px">Última actualización: 2026</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- TERMINOS -->
+<div id="terminos" class="card">
+<span class="badge badge-white">LEE ANTES DE USAR</span>
+<h2>Términos y Condiciones de Uso</h2>
+
 <ol>
-<li><strong>Licencia de uso personal por código.</strong> Cada código activa la app en 1 dispositivo. La licencia es intransferible y no puede revenderse. El emisor del código es Roybert Hernandez / TasaStock PRO.</li>
-<li><strong>App 100% offline.</strong> La aplicación funciona sin internet. El usuario es responsable de hacer su respaldo .json periódicamente desde el botón "Exportar .json".</li>
-<li><strong>Pérdida de datos.</strong> El desarrollador no se hace responsable por pérdida de datos por borrado de caché del navegador, formateo del equipo, desinstalación de la app o daño del dispositivo. El respaldo es responsabilidad del cliente.</li>
-<li><strong>Tasa referencial.</strong> El precio de la tasa Bs es referencial y editable por el usuario. Puede usar tasa BCV o Paralela según su criterio. La app no fija precios oficiales.</li>
-<li><strong>Venta final sin reembolso.</strong> Por ser un producto digital con código de activación instantáneo, una vez entregado el código no hay reembolso.</li>
-<li><strong>Soporte.</strong> Soporte por WhatsApp para instalación y activación. No incluye capacitación contable ni responsabilidad fiscal.</li>
-<li><strong>Actualizaciones.</strong> Las actualizaciones se publican en el mismo link de GitHub. Pueden incluir mejoras visuales y de rendimiento sin costo adicional para licencias activas.</li>
+<li><strong>Licencia personal por código:</strong> Cada código activa 1 dispositivo. Es personal, intransferible, no revendible.</li>
+<li><strong>App 100% offline:</strong> Funciona sin internet. Tú eres responsable de hacer respaldo con el botón "Exportar .json".</li>
+<li><strong>Pérdida de datos:</strong> No nos hacemos responsables si borras caché, formateas el celular o se daña el equipo sin respaldo.</li>
+<li><strong>Tasa referencial:</strong> La tasa Bs es editable por ti. Puedes usar BCV o Paralelo. La app no fija precios oficiales, solo calcula.</li>
+<li><strong>Venta final:</strong> Por ser producto digital con activación instantánea, no hay reembolso una vez entregado el código.</li>
+<li><strong>Soporte:</strong> Instalación y activación por WhatsApp/Facebook donde compraste. Horario Venezuela.</li>
+<li><strong>Propiedad:</strong> Diseño, logo $/Bs y código son de TasaStock PRO. Prohibida copia o reventa del código fuente.</li>
 </ol>
-</div>
 
-<div class="card">
-<h2>Propiedad intelectual</h2>
-<p>TasaStock PRO, su diseño, logo de cubo $ / Bs y código fuente son propiedad del desarrollador. Queda prohibida su copia, clonación o reventa sin autorización.</p>
-</div>
-
-<div class="card">
-<h2>Contacto</h2>
-<p>Para soporte o compras: contacto vía Facebook donde adquiriste la app. Respuesta en horario comercial Venezuela.</p>
+<h3>Contacto</h3>
+<p>Soporte donde adquiriste la app. Respuesta en horario comercial Venezuela.</p>
 </div>
 
 <div class="footer">
-TasaStock PRO • 2026 • <a href="index.html">Volver a la app</a> • <a href="privacidad.html">Privacidad</a>
+TasaStock PRO • 2026 • Hecho en Venezuela para bodegueros • <a href="index.html">Abrir App</a>
 </div>
+
+<script>
+// Scroll suave para anclas
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+ a.addEventListener('click',e=>{
+  e.preventDefault();
+  document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+ });
+});
+</script>
 </body>
 </html>
